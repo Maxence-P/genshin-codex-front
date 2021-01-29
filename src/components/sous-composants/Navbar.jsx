@@ -5,6 +5,7 @@ import {
   WeaponBow, WeaponCatalyst, WeaponClaymore, WeaponPolearm, WeaponSword,
   ElementAnemo, ElementCryo, ElementDendro, ElementElectro, ElementGeo, ElementHydro, ElementPyro
 } from '../ImportImg';
+import Searchbar from './Searchbar';
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -12,13 +13,18 @@ import { Link } from 'react-router-dom';
 
 const Navigation = () => {
 
+  const [search, setSearch] = useState("");
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+
   return (
     <Navbar>
       <NavItem icon={<DropdownIcon className="dropdown_icon" />}>
         <DropdownMenu />
       </NavItem>
-      <NavItem icon="Ok" />
-      <NavItem icon={<SearchIcon />} />
+      <Searchbar search={search} handleSearch={handleSearch} />
+      <NavItem icon={<Link onClick={() => {setSearch("")}} to={`/Search/${search}`}><SearchIcon /></Link>} />
     </Navbar>
   );
 }
@@ -33,7 +39,7 @@ const Navbar = (props) => {
 
 const NavItem = (props) => {
 
-  const [open, setOpen] = useState(props.opened);
+  const [open, setOpen] = useState(false);
 
   return (
     <li className="nav-item">
@@ -104,13 +110,13 @@ const DropdownMenu = () => {
         const items = listItems[index];
         return (
         items !== undefined && (
-          <div className="dropdown-line">
+          <div className="dropdown-line" key={index}>
             <p className="dropdown-head">{title}</p>
             <div className="dropdown-items">
               {items.map((item) => {
                 const itemValue = Object.values(item)[0];
                 return (
-                  <Link to={`/Characters/${itemValue}`}>{CompareItems(itemValue)}</Link>
+                  <Link to={`/Characters/${itemValue}`} key={Object.values(item)}>{CompareItems(itemValue)}</Link>
                 )
               })}
             </div>

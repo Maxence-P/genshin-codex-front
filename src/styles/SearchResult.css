@@ -1,0 +1,29 @@
+.under {
+  z-index: -2;
+}
+
+.results-outline {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 50px 100px;
+}
+
+.result-card {
+  width: 180px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 15px 0 15px 0;
+  border: solid 5px var(--tertiary-color);
+  background-color: var(--secondary-color);
+}
+
+.result-name {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-size: 20px;
+}

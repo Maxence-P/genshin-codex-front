@@ -14,12 +14,6 @@ a {
   height: 25px;
 }
 
-.dropdown_icon_inverse {
-  width: 25px;
-  height: 25px;
-  transform: rotate(180deg);
-}
-
 .navbar {
   height: 80px;
   background-color: var(--tertiary-color);

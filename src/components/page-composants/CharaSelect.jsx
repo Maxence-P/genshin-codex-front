@@ -1,7 +1,10 @@
 import Navigation from '../sous-composants/Navbar';
 import Footer from '../sous-composants/Footer';
 
-const CharaCities = () => {
+const CharaSelect = (props) => {
+
+  console.log(props.match.params.selector);
+
   return (
     <>
       <Navigation />
@@ -10,4 +13,4 @@ const CharaCities = () => {
   )
 }
 
-export default CharaCities;
+export default CharaSelect;
